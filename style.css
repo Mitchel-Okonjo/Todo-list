@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --theme-color: #22d3ee;
+  --sidebar-color: #f5f5f5;
+  --components-color: #f8fafc;
+  --header-font: 'Oswald', sans-serif;
+  --nav-font: 'Open Sans', sans-serif;
+  --project-title-font: 'Lato', sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+html {
+  font-size: 62.5%;
+}
+
+body {
+  display: grid;
+  grid-template-columns: repeat(1, max(19.5rem, 15%)) repeat(1, 1fr);
+  grid-template-rows: repeat(1, min(12rem, 12%)) repeat(1, 1fr) repeat(
+      1,
+      min(6rem, 10%)
+    );
+  grid-template-areas:
+    'header header'
+    'side-bar main-content'
+    'footer footer';
+}
+
+.header {
+  background-color: var(--theme-color);
+  grid-area: header;
+  color: black;
+  flex-shrink: 0;
+  box-shadow: 0.3rem 0.3rem 0.3rem 0.3rem rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  display: flex;
+  padding: 1.5rem;
+  align-content: center;
+  gap: 2rem;
+  position: sticky;
+  top: 0;
+}
+
+.header-title {
+  align-self: center;
+  font-size: 3.5rem;
+  font-family: var(--header-font);
+}
+
+.sidebar {
+  background-color: var(--sidebar-color);
+  grid-area: side-bar;
+  display: flex;
+  flex-direction: column;
+  padding: 3.5rem 4rem;
+  gap: 2rem;
+}
+
+.default-nav,
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sidebar-item {
+  display: flex;
+  align-content: center;
+  gap: 1rem;
+}
+
+.sidebar-text {
+  align-self: center;
+  font-size: 2rem;
+  font-family: var(--nav-font);
+}
+
+.sidebar-icon {
+  height: 2rem;
+  align-self: center;
+}
+
+.projects-title {
+  font-family: var(--project-title-font);
+  font-size: 2.5rem;
+}
+.components {
+  background-color: var(--compoents-color);
+  grid-area: main-content;
+  display: flex;
+  flex-direction: column;
+  padding: 3.5rem 3.5rem;
+}
+
+.footer {
+  background-color: var(--theme-color);
+  color: white;
+  grid-area: footer;
+}
