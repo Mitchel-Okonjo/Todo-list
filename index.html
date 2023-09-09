@@ -8,6 +8,69 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- Overlay for popup -->
+    <div class="overlay"></div>
+
+    <!-- Popup to add new task -->
+    <div class="popup task-popup">
+      <div class="popup-header">
+        <div class="popup-text popup-title">Add new task</div>
+        <button class="cancel-popup">&times</button>
+      </div>
+      <!-- form inputs -->
+      <form id="form">
+        <input
+          type="text"
+          placeholder="Title"
+          class="text-input title"
+          required
+        />
+        <input
+          type="text"
+          placeholder="Description"
+          class="text-input description"
+        />
+        <input type="date" placeholder="Due-Date" class="date-input" />
+        <div class="priority-section">
+          <div class="priority-title">Priority</div>
+          <div class="priority-options">
+            <div>
+              <input
+                type="radio"
+                id="low"
+                name="priority"
+                value="low"
+                class="radio-btn"
+              />
+              <label for="low">Low</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                id="medium"
+                name="priority"
+                value="medium"
+                class="radio-btn"
+              />
+              <label for="medium">Medium</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                id="high"
+                name="priority"
+                value="high"
+                class="radio-btn"
+              />
+              <label for="high">High</label>
+            </div>
+          </div>
+        </div>
+        <input type="submit" class="submit" value="Add" />
+      </form>
+    </div>
+
+    <!-- Page Header -->
     <div class="header">
       <img
         class="icon header-icon"
@@ -16,13 +79,14 @@
       />
       <h1 class="header-title">JUST TODO-IT</h1>
     </div>
+    <!-- Sidebar/nav -->
     <div class="sidebar">
       <div class="default-nav">
         <div class="sidebar-item nav-item">
           <img
             class="icon sidebar-icon"
             src="icons/inbox.svg"
-            alt="Inbox icon "
+            alt="Inbox icon"
           />
           <div class="sidebar-text">Inbox</div>
         </div>
@@ -42,15 +106,16 @@
           />
           <div class="sidebar-text">This Week</div>
         </div>
-        <div class="sidebar-item nav-item">
+        <div class="sidebar-item nav-item add-task">
           <img
             class="icon sidebar-icon"
             src="icons/plus.svg"
             alt="claendar-week icon"
           />
-          <div class="sidebar-text add-task">Add Task</div>
+          <div class="sidebar-text">Add Task</div>
         </div>
       </div>
+      <!-- Projects -->
       <h1 class="projects-title">Projects</h1>
       <div class="projects-list">
         <div class="sidebar-item project">
@@ -72,6 +137,8 @@
       </div>
     </div>
     <div class="components"></div>
+    <!-- footer -->
     <div class="footer"></div>
   </body>
+  <script src="test.js"></script>
 </html>
