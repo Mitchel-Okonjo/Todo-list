@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 
 * {
   box-sizing: border-box;
@@ -14,15 +14,15 @@
   --theme-color: #22d3ee;
   --sidebar-color: #ecfeff;
   --components-color: #f8fafc;
-  --header-font: 'Oswald', sans-serif;
-  --nav-font: 'Open Sans', sans-serif;
-  --project-title-font: 'Lato', sans-serif;
+  --header-font: "Oswald", sans-serif;
+  --nav-font: "Open Sans", sans-serif;
+  --project-title-font: "Lato", sans-serif;
   --button-hover: #cffafe;
   --button-click: #a5f3fc;
   --submit-button: #67e8f9;
   --input-focus: #06b6d4;
-  --main-header-font: 'Poppins', sans-serif;
-  --todo-font: 'Roboto', sans-serif;
+  --main-header-font: "Poppins", sans-serif;
+  --todo-font: "Roboto", sans-serif;
 }
 
 html,
@@ -41,9 +41,9 @@ body {
       min(6rem, 10%)
     );
   grid-template-areas:
-    'header header'
-    'side-bar main-content'
-    'footer footer';
+    "header header"
+    "side-bar main-content"
+    "footer footer";
 }
 
 .header {
