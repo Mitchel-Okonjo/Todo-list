@@ -39,7 +39,6 @@ const projectFns = (() => {
   };
 
   const display = (title) => {
-    console.log("displayed");
     const projectList = document.querySelector(".projects-list");
     projectList.appendChild(createProject(title));
   };
