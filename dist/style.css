@@ -21,6 +21,7 @@
   --button-click: #a5f3fc;
   --submit-button: #67e8f9;
   --input-focus: #06b6d4;
+  --delete-click: #06b6d4;
   --main-header-font: "Poppins", sans-serif;
   --todo-font: "Roboto", sans-serif;
 }
@@ -177,15 +178,33 @@ body {
 .todo-cancel {
   position: absolute;
   right: 1%;
-  background: none;
+  background-color: var(--sidebar-color);
   border: none;
   outline: none;
-  font-size: 2.5rem;
+  font-size: 1.5rem;
+  padding: 0.3rem 1.5rem;
+  border-radius: 1rem;
+}
+
+.todo-cancel:hover {
+  background-color: var(--theme-color);
+  cursor: pointer;
+  color: white;
+}
+
+.todo-cancel:active {
+  transform: scale(0.95);
+  background-color: var(--delete-click);
 }
 
 .todo-date {
   position: absolute;
-  right: 5%;
+  right: 15%;
+  width: 10rem;
+  border: none;
+  text-align: center;
+  background-color: var(--sidebar-color);
+  border-radius: 0.5rem;
 }
 
 .todo.add-task {
@@ -196,6 +215,28 @@ body {
   background-color: var(--theme-color);
   color: white;
   grid-area: footer;
+}
+
+.sidebar-item.project {
+  position: relative;
+}
+.project-cancel {
+  background: none;
+  border: none;
+  margin-left: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  align-self: center;
+  font-size: 2.5rem;
+  position: absolute;
+  right: 1rem;
+  opacity: 0;
+}
+
+.project-cancel:hover {
+  cursor: pointer;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .overlay {
