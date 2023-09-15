@@ -34,6 +34,7 @@
           type="date"
           placeholder="Due-Date"
           class="date-input task-input"
+          required
         />
         <div class="priority-section">
           <div class="priority-title">Priority</div>
@@ -86,6 +87,7 @@
           type="text"
           placeholder="Project Title"
           class="project-input title"
+          required
         />
         <input type="submit" class="submit project" value="Add" />
       </form>
@@ -138,16 +140,7 @@
       </div>
       <!-- Projects -->
       <h1 class="projects-title">Projects</h1>
-      <div class="projects-list">
-        <div class="sidebar-item project">
-          <img
-            class="icon sidebar-icon"
-            src="icons/format-list-bulleted.svg"
-            alt="Format-list icon"
-          />
-          <div class="project-name sidebar-text">Final cut pro</div>
-        </div>
-      </div>
+      <div class="projects-list"></div>
       <div class="sidebar-item add-project">
         <img
           class="icon sidebar-icon add-project"
@@ -161,12 +154,6 @@
     <div class="main">
       <div class="main-header">Inbox</div>
       <div class="main-content">
-        <div class="todo">
-          <input type="checkbox" class="todo-check" />
-          <div class="todo-title">This is the very first todo</div>
-          <div class="todo-date">Date</div>
-          <button class="todo-cancel">&times</button>
-        </div>
         <div class="todo add-task">
           <img
             class="icon sidebar-icon add-task"

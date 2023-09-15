@@ -3,6 +3,9 @@ const Popup = (() => {
   const newTask = document.querySelector(".task-popup");
   const newProject = document.querySelector(".project-popup");
   const overlay = document.querySelector(".overlay");
+  const todoTitle = document.querySelector(".task-input.title");
+  const projectTitle = document.querySelector(".project-input.title");
+  const date = document.querySelector(".date-input");
 
   const openTask = () => {
     newTask.classList.add("active");
@@ -32,21 +35,64 @@ const Popup = (() => {
     }
   };
 
+  const closePopup = () => {
+    const currentPopup = document.querySelector(".popup.active");
+    currentPopup.classList.remove("active");
+    removeOverlay();
+    setTimeout(clearForm, 200);
+  };
+
+  const cancelWasClicked = (e) => {
+    return e.target.matches(".cancel-popup");
+  };
+
+  const overlayWasClicked = (e) => {
+    return e.target.matches(".overlay");
+  };
+
+  const todoFormNotComplete = () => {
+    return todoTitle.value === "" || date.value === "";
+  };
+
+  const projectFormNotComplete = () => {
+    return projectTitle.value === "";
+  };
+
   const close = (e) => {
-    // if close button or overlay was clicked then close popup and overlay
-    if (e.target.matches(".cancel-popup")) {
-      e.target.closest(".popup.active").classList.remove("active");
-      removeOverlay();
-    } else if (e.target.matches(".overlay")) {
-      const openPopup = document.querySelector(".popup.active");
-      openPopup.classList.remove("active");
-      removeOverlay();
-    } else {
-      return;
+    // if close button or overlay was clicked then remove popup and overlay
+    if (cancelWasClicked(e) || overlayWasClicked(e)) {
+      closePopup();
+      clearForm();
     }
   };
 
-  return { open, close };
+  const clearForm = () => {
+    // Clear form inputs immediately Popup is closed
+    setTimeout(resetFormInput, 200);
+  };
+
+  const resetFormInput = () => {
+    const description = document.querySelector(".description");
+    const date = document.querySelector(".date-input");
+    const priorities = document.getElementsByName("priority");
+
+    projectTitle.value = "";
+    todoTitle.value = "";
+    description.value = "";
+    date.value = "";
+    for (let i = 0; i < priorities.length; i++) {
+      const priority = priorities[i];
+      priority.checked = false;
+    }
+  };
+
+  return {
+    open,
+    close,
+    todoFormNotComplete,
+    projectFormNotComplete,
+    closePopup,
+  };
 })();
 
 export { Popup };
