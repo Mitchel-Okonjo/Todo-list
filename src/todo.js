@@ -51,7 +51,6 @@ const todoFns = (() => {
   };
 
   const display = (title, date, id) => {
-    // if (title === "") return;
     const todoList = document.querySelector(".main-content");
     const newTodo = createTodoItem(title, date, id);
     const firstItem = todoList.firstChild;

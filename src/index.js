@@ -7,7 +7,6 @@ const logicCtrl = (() => {
   const projectArr = [];
 
   const createTodo = (title, description, date, priority, id) => {
-    // if (title === "") return;
     todoArr.push(new Todo(title, description, date, priority, id));
   };
 
