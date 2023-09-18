@@ -10,6 +10,9 @@
     "sourceType": "module"
   },
   "rules": {
-    "quotes": ["single", "double"]
+    "quotes": 0,
+    "import/prefer-default-export": "off",
+    "no-use-before-define": ["error", { "functions": false }],
+    "no-plusplus": "off"
   }
 }
