@@ -30,7 +30,6 @@ const Popup = (() => {
       openTask();
     } else if (e.target.matches(".add-project")) {
       openProject();
-    } else {
     }
   };
 
