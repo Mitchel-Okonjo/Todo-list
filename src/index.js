@@ -3,6 +3,7 @@ import { TodoDisp, TodoCtrl } from "./todo";
 import { ProjectDisp, ProjectCtrl } from "./project";
 import { Inbox } from "./inbox";
 import { Store } from "./localStorage";
+import { DateFns } from "./date";
 
 const DisplayCtrl = (() => {
   Inbox.display();
@@ -39,7 +40,17 @@ const DisplayCtrl = (() => {
 
   // Add Todo-item to list
   submitTodo.addEventListener("click", (e) => {
+    // Handle incomplete form
     if (Popup.todoFormNotComplete()) return;
+
+    // Handle past date inputs
+    if (DateFns.notValid(date.value)) {
+      alert("Plese enter a future date!");
+      e.preventDefault();
+      return;
+    }
+
+    // Handle priority input
     for (let i = 0; i < priorities.length; i++) {
       if (priorities[i].checked) {
         priority = priorities[i].value;
