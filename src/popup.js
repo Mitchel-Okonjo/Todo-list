@@ -31,7 +31,6 @@ const Popup = (() => {
     } else if (e.target.matches(".add-project")) {
       openProject();
     } else {
-      return;
     }
   };
 
@@ -42,21 +41,13 @@ const Popup = (() => {
     setTimeout(clearForm, 200);
   };
 
-  const cancelWasClicked = (e) => {
-    return e.target.matches(".cancel-popup");
-  };
+  const cancelWasClicked = (e) => e.target.matches(".cancel-popup");
 
-  const overlayWasClicked = (e) => {
-    return e.target.matches(".overlay");
-  };
+  const overlayWasClicked = (e) => e.target.matches(".overlay");
 
-  const todoFormNotComplete = () => {
-    return todoTitle.value === "" || date.value === "";
-  };
+  const todoFormNotComplete = () => todoTitle.value === "" || date.value === "";
 
-  const projectFormNotComplete = () => {
-    return projectTitle.value === "";
-  };
+  const projectFormNotComplete = () => projectTitle.value === "";
 
   const close = (e) => {
     // if close button or overlay was clicked then remove popup and overlay
@@ -73,7 +64,6 @@ const Popup = (() => {
 
   const resetFormInput = () => {
     const description = document.querySelector(".description");
-    const date = document.querySelector(".date-input");
     const priorities = document.getElementsByName("priority");
 
     projectTitle.value = "";
