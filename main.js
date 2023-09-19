@@ -2,6 +2,30 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/date.js":
+/*!*********************!*\
+  !*** ./src/date.js ***!
+  \*********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "DateFns": () => (/* binding */ DateFns)
+/* harmony export */ });
+const DateFns = (() => {
+  const notValid = (date) => {
+    if (new Date(date) <= new Date()) return true;
+    return false;
+  };
+
+  return { notValid };
+})();
+
+
+
+
+/***/ }),
+
 /***/ "./src/inbox.js":
 /*!**********************!*\
   !*** ./src/inbox.js ***!
@@ -201,7 +225,6 @@ const Popup = (() => {
     } else if (e.target.matches(".add-project")) {
       openProject();
     } else {
-      return;
     }
   };
 
@@ -212,21 +235,13 @@ const Popup = (() => {
     setTimeout(clearForm, 200);
   };
 
-  const cancelWasClicked = (e) => {
-    return e.target.matches(".cancel-popup");
-  };
+  const cancelWasClicked = (e) => e.target.matches(".cancel-popup");
 
-  const overlayWasClicked = (e) => {
-    return e.target.matches(".overlay");
-  };
+  const overlayWasClicked = (e) => e.target.matches(".overlay");
 
-  const todoFormNotComplete = () => {
-    return todoTitle.value === "" || date.value === "";
-  };
+  const todoFormNotComplete = () => todoTitle.value === "" || date.value === "";
 
-  const projectFormNotComplete = () => {
-    return projectTitle.value === "";
-  };
+  const projectFormNotComplete = () => projectTitle.value === "";
 
   const close = (e) => {
     // if close button or overlay was clicked then remove popup and overlay
@@ -243,7 +258,6 @@ const Popup = (() => {
 
   const resetFormInput = () => {
     const description = document.querySelector(".description");
-    const date = document.querySelector(".date-input");
     const priorities = document.getElementsByName("priority");
 
     projectTitle.value = "";
@@ -565,6 +579,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _project__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./project */ "./src/project.js");
 /* harmony import */ var _inbox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./inbox */ "./src/inbox.js");
 /* harmony import */ var _localStorage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./localStorage */ "./src/localStorage.js");
+/* harmony import */ var _date__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./date */ "./src/date.js");
+
 
 
 
@@ -606,7 +622,17 @@ const DisplayCtrl = (() => {
 
   // Add Todo-item to list
   submitTodo.addEventListener("click", (e) => {
+    // Handle incomplete form
     if (_popup__WEBPACK_IMPORTED_MODULE_0__.Popup.todoFormNotComplete()) return;
+
+    // Handle past date inputs
+    if (_date__WEBPACK_IMPORTED_MODULE_5__.DateFns.notValid(date.value)) {
+      alert("Plese enter a future date!");
+      e.preventDefault();
+      return;
+    }
+
+    // Handle priority input
     for (let i = 0; i < priorities.length; i++) {
       if (priorities[i].checked) {
         priority = priorities[i].value;
