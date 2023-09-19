@@ -438,8 +438,13 @@ const TodoDisp = (() => {
   };
 
   const createTodoDate = (date) => {
-    const todoDate = document.createElement("input");
-    todoDate.value = date;
+    const parts = date.split("-");
+    const day = parts[2];
+    const month = parts[1];
+    const year = parts[0];
+    const dateFormat = `${day} - ${month} - ${year}`;
+    const todoDate = document.createElement("div");
+    todoDate.textContent = dateFormat;
     todoDate.classList.add("todo-date");
     return todoDate;
   };
@@ -481,6 +486,7 @@ const TodoDisp = (() => {
     const newTodo = createTodoItem(title, date, id);
     const firstItem = todoList.firstChild;
     todoList.insertBefore(newTodo, firstItem);
+    document.querySelector(".todo-date").readOnly = true;
   };
 
   return { display, remove };
