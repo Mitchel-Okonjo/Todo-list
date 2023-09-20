@@ -27,6 +27,8 @@ const TodoCtrl = (() => {
 
   const remove = (id) => {
     Store.removeItem("Inbox", id);
+    Store.removeItem("Today", id);
+    Store.removeItem("ThisWeek", id);
   };
 
   return { createTodo, remove };
