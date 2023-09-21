@@ -1,15 +1,8 @@
 import { Store } from "./localStorage";
 import { TodoDisp } from "./todo";
+import { Display } from "./display";
 
 const Inbox = (() => {
-  const loadItems = (arr) => {
-    if (arr.length === 0) return;
-    for (let i = 0; i < arr.length; i++) {
-      const item = arr[i];
-      TodoDisp.display(item.title, item.date, item.dataId);
-    }
-  };
-
   const displayAddButton = () => {
     const content = document.querySelector(".main-content");
     const div = document.createElement("div");
@@ -24,22 +17,17 @@ const Inbox = (() => {
     content.appendChild(div);
   };
 
-  const navFocus = (className) => {
-    const navs = document.querySelectorAll(".nav-item");
-    navs.forEach((nav) => {
-      nav.classList.remove("nav-focus");
-    });
-    const currNav = document.querySelector(`.${className}`);
-    currNav.classList.add("nav-focus");
-  };
-
   const display = () => {
+    Display.showAddTaskNav();
+    Display.clear();
+    if (Display.isCurrentHeading("Inbox") && Display.pageLoaded()) return;
+    Display.changeHeading("Inbox");
     const arr = Store.getArray("Inbox");
-    navFocus("inbox");
+    Display.navFocus("Inbox");
     if (Store.checkArray("Inbox") === false) {
       displayAddButton();
     } else {
-      loadItems(arr);
+      Display.loadItems(arr, TodoDisp);
       displayAddButton();
     }
   };
