@@ -103,6 +103,16 @@ body {
   background-color: var(--button-click);
 }
 
+.sidebar-item.add-task {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.sidebar-item.add-task.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
 .sidebar-text {
   align-self: center;
   font-size: 1.5rem;
