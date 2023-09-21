@@ -2,8 +2,11 @@ import { Popup } from "./popup";
 import { TodoDisp, TodoCtrl } from "./todo";
 import { ProjectDisp, ProjectCtrl } from "./project";
 import { Inbox } from "./inbox";
+import { Today } from "./today";
+import { ThisWeek } from "./thisWeek";
 import { Store } from "./localStorage";
 import { DateFns } from "./date";
+import { Display } from "./display";
 
 const DisplayCtrl = (() => {
   Inbox.display();
@@ -22,6 +25,13 @@ const DisplayCtrl = (() => {
     // Listen to events to open/close popup
     Popup.open(e);
     Popup.close(e);
+  });
+
+  // Handle change of nav
+  document.addEventListener("click", (e) => {
+    if (e.target.classList.contains("Inbox")) Inbox.display();
+    if (e.target.classList.contains("Today")) Today.display();
+    if (e.target.classList.contains("ThisWeek")) ThisWeek.display();
   });
 
   // Remove Todo-item
@@ -64,7 +74,6 @@ const DisplayCtrl = (() => {
     const todoId = Store.getId("todo-id");
     Store.setId("todo-id", Number(todoId) + 1);
 
-    TodoDisp.display(todoTitle.value, date.value, todoId);
     TodoCtrl.createTodo(
       todoTitle.value,
       description.value,
@@ -72,10 +81,16 @@ const DisplayCtrl = (() => {
       priority,
       todoId
     );
-
     // Prevent form from submitting input to server
     e.preventDefault();
     Popup.closePopup();
+
+    if (Display.isCurrentHeading("Today")) Today.display();
+    if (Display.isCurrentHeading("This Week")) ThisWeek.display();
+    if (Display.isCurrentHeading("Inbox")) Inbox.display();
+
+    DateFns.setTodayTodos();
+    DateFns.setThisWeekTodos();
   });
 
   // Add Project Item to list
