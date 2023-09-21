@@ -54,7 +54,7 @@ const Store = (() => {
 
   // Removes an item from respective array using id of the item
   const removeItem = (name, id) => {
-    if (getArray(name) === null) return;
+    if (checkArray(name) === false) return;
     const array = getArray(name);
     const index = search(array, id);
     if (index === -1) return;
