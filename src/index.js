@@ -21,6 +21,22 @@ const DisplayCtrl = (() => {
   const submitProject = document.querySelector(".submit.project");
   let priority;
 
+  // Handle media query change for side navigation
+  const mediaQuery = window.matchMedia("(min-width: 800px), (width: 800px)");
+  mediaQuery.addEventListener("change", Display.handleMediaChange);
+
+  document.addEventListener("click", (e) => {
+    // Toggle Sidebar Nav button
+    const navBtn = document.querySelector("nav");
+    const navOverlay = document.querySelector(".nav-overlay");
+
+    if (navBtn.contains(e.target)) {
+      Display.toggleNav();
+    } else if (e.target === navOverlay) {
+      Display.toggleNav();
+    }
+  });
+
   document.addEventListener("click", (e) => {
     // Listen to events to open/close popup
     Popup.open(e);

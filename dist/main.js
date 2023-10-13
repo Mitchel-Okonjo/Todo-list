@@ -926,6 +926,27 @@ const Display = (() => {
     currNav.classList.add("nav-focus");
   };
 
+  const toggleNav = () => {
+    const topBar = document.querySelector("nav .top");
+    const middleBar = document.querySelector("nav .middle");
+    const bottomBar = document.querySelector("nav .bottom");
+    const sideNavContent = document.querySelector(".sidebar");
+    const navOverlay = document.querySelector(".nav-overlay");
+
+    topBar.classList.toggle("top-rotate");
+    middleBar.classList.toggle("middle-vanish");
+    bottomBar.classList.toggle("bottom-rotate");
+    sideNavContent.classList.toggle("show");
+    navOverlay.classList.toggle("active");
+  };
+
+  const handleMediaChange = (e) => {
+    if (e.matches) {
+      const openNav = document.querySelector(".sidebar.show");
+      if (openNav) toggleNav();
+    }
+  };
+
   // const sidebar = document.querySelector(".sidebar");
   // const mainContent = document.querySelector(".main");
 
@@ -949,6 +970,8 @@ const Display = (() => {
     clear,
     showAddTaskNav,
     removeAddTaskNav,
+    toggleNav,
+    handleMediaChange,
   };
 })();
 
@@ -975,14 +998,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const Inbox = (() => {
-  // const loadItems = (arr) => {
-  //   if (arr.length === 0) return;
-  //   for (let i = 0; i < arr.length; i++) {
-  //     const item = arr[i];
-  //     TodoDisp.display(item.title, item.date, item.dataId);
-  //   }
-  // };
-
   const displayAddButton = () => {
     const content = document.querySelector(".main-content");
     const div = document.createElement("div");
@@ -996,15 +1011,6 @@ const Inbox = (() => {
   <div class="todo-text add-task">Add task</div>`;
     content.appendChild(div);
   };
-
-  // const navFocus = (className) => {
-  //   const navs = document.querySelectorAll(".nav-item");
-  //   navs.forEach((nav) => {
-  //     nav.classList.remove("nav-focus");
-  //   });
-  //   const currNav = document.querySelector(`.${className}`);
-  //   currNav.classList.add("nav-focus");
-  // };
 
   const display = () => {
     _display__WEBPACK_IMPORTED_MODULE_2__.Display.showAddTaskNav();
@@ -1644,6 +1650,22 @@ const DisplayCtrl = (() => {
   const submitProject = document.querySelector(".submit.project");
   let priority;
 
+  // Handle media query change for side navigation
+  const mediaQuery = window.matchMedia("(min-width: 800px), (width: 800px)");
+  mediaQuery.addEventListener("change", _display__WEBPACK_IMPORTED_MODULE_8__.Display.handleMediaChange);
+
+  document.addEventListener("click", (e) => {
+    // Toggle Sidebar Nav button
+    const navBtn = document.querySelector("nav");
+    const navOverlay = document.querySelector(".nav-overlay");
+
+    if (navBtn.contains(e.target)) {
+      _display__WEBPACK_IMPORTED_MODULE_8__.Display.toggleNav();
+    } else if (e.target === navOverlay) {
+      _display__WEBPACK_IMPORTED_MODULE_8__.Display.toggleNav();
+    }
+  });
+
   document.addEventListener("click", (e) => {
     // Listen to events to open/close popup
     _popup__WEBPACK_IMPORTED_MODULE_0__.Popup.open(e);
@@ -1714,8 +1736,6 @@ const DisplayCtrl = (() => {
 
     _date__WEBPACK_IMPORTED_MODULE_7__.DateFns.setTodayTodos();
     _date__WEBPACK_IMPORTED_MODULE_7__.DateFns.setThisWeekTodos();
-
-    // TodoDisp.display(todoTitle.value, date.value, todoId);
   });
 
   // Add Project Item to list

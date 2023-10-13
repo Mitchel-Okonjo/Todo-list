@@ -46,6 +46,27 @@ const Display = (() => {
     currNav.classList.add("nav-focus");
   };
 
+  const toggleNav = () => {
+    const topBar = document.querySelector("nav .top");
+    const middleBar = document.querySelector("nav .middle");
+    const bottomBar = document.querySelector("nav .bottom");
+    const sideNavContent = document.querySelector(".sidebar");
+    const navOverlay = document.querySelector(".nav-overlay");
+
+    topBar.classList.toggle("top-rotate");
+    middleBar.classList.toggle("middle-vanish");
+    bottomBar.classList.toggle("bottom-rotate");
+    sideNavContent.classList.toggle("show");
+    navOverlay.classList.toggle("active");
+  };
+
+  const handleMediaChange = (e) => {
+    if (e.matches) {
+      const openNav = document.querySelector(".sidebar.show");
+      if (openNav) toggleNav();
+    }
+  };
+
   // const sidebar = document.querySelector(".sidebar");
   // const mainContent = document.querySelector(".main");
 
@@ -69,6 +90,8 @@ const Display = (() => {
     clear,
     showAddTaskNav,
     removeAddTaskNav,
+    toggleNav,
+    handleMediaChange,
   };
 })();
 
