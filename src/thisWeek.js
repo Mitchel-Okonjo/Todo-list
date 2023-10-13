@@ -13,6 +13,7 @@ const ThisWeek = (() => {
     Store.setArray(DateFns.filterThisWeekTodos(), "ThisWeek");
     const arr = Store.getArray("ThisWeek");
     Display.loadItems(arr, TodoDisp);
+    Display.toggleNav();
   };
 
   return { display };

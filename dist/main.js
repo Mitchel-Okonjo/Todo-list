@@ -1025,6 +1025,7 @@ const Inbox = (() => {
       _display__WEBPACK_IMPORTED_MODULE_2__.Display.loadItems(arr, _todo__WEBPACK_IMPORTED_MODULE_1__.TodoDisp);
       displayAddButton();
     }
+    _display__WEBPACK_IMPORTED_MODULE_2__.Display.toggleNav();
   };
 
   return { display };
@@ -1359,6 +1360,7 @@ const ThisWeek = (() => {
     _localStorage__WEBPACK_IMPORTED_MODULE_0__.Store.setArray(_date__WEBPACK_IMPORTED_MODULE_2__.DateFns.filterThisWeekTodos(), "ThisWeek");
     const arr = _localStorage__WEBPACK_IMPORTED_MODULE_0__.Store.getArray("ThisWeek");
     _display__WEBPACK_IMPORTED_MODULE_3__.Display.loadItems(arr, _todo__WEBPACK_IMPORTED_MODULE_1__.TodoDisp);
+    _display__WEBPACK_IMPORTED_MODULE_3__.Display.toggleNav();
   };
 
   return { display };
@@ -1398,6 +1400,7 @@ const Today = (() => {
     _localStorage__WEBPACK_IMPORTED_MODULE_0__.Store.setArray(_date__WEBPACK_IMPORTED_MODULE_2__.DateFns.filterTodayTodos(), "Today");
     const arr = _localStorage__WEBPACK_IMPORTED_MODULE_0__.Store.getArray("Today");
     _display__WEBPACK_IMPORTED_MODULE_3__.Display.loadItems(arr, _todo__WEBPACK_IMPORTED_MODULE_1__.TodoDisp);
+    _display__WEBPACK_IMPORTED_MODULE_3__.Display.toggleNav();
   };
 
   return { display };

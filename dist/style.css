@@ -522,6 +522,10 @@ nav .bottom-rotate {
   .main-header {
     font-size: 3rem;
   }
+
+  .todo-date {
+    display: none;
+  }
 }
 
 @media (max-width: 500px) {
@@ -535,6 +539,10 @@ nav .bottom-rotate {
   }
 
   .header-title {
+    display: none;
+  }
+
+  .todo-cancel {
     display: none;
   }
 }

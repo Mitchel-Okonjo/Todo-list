@@ -13,6 +13,7 @@ const Today = (() => {
     Store.setArray(DateFns.filterTodayTodos(), "Today");
     const arr = Store.getArray("Today");
     Display.loadItems(arr, TodoDisp);
+    Display.toggleNav();
   };
 
   return { display };

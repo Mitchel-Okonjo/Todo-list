@@ -30,6 +30,7 @@ const Inbox = (() => {
       Display.loadItems(arr, TodoDisp);
       displayAddButton();
     }
+    Display.toggleNav();
   };
 
   return { display };
